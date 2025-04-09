@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recomm
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - recomm-network
+
+networks:
+  recomm-network:
+    driver: bridge
